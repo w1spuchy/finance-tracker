@@ -72,17 +72,37 @@ header
 
 .mobile-nav-container
 {
-    display: flex;
+    display: none;
     overflow: hidden;
     max-height: 0px;
+    transition: 0.4s ease-in-out all;
 }
 
-.menu-checkbox:checked~.mobile-nav-container
+#menu-checkbox:checked~.mobile-nav-container
 {
-    max-height: none;
+    max-height: 500px;
+    padding: 0px 0px 10px;
+}
+
+.mobile-nav
+{
+    display: flex;
+    width: 100%;
+    padding: 0px 20px;
+}
+
+.mobile-nav-list
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 @media (max-width: 768px) {
+    .mobile-nav-container
+    {
+        display: flex;
+    }
     .burger-menu-button
     {
         display: flex;
