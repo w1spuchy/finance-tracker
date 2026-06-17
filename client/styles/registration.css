@@ -5,10 +5,9 @@ main
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    gap: 30px
 }
 
-.authentification-section
+.registration-section
 {
     display: flex;
     flex-direction: column;
@@ -17,11 +16,3 @@ main
     padding: 30px;
     max-width: 580px;
 }
-
-.registration-link
-{
-    font-size: 12px;
-    color: #959494;
-}
-
-

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="../styles/base_styles/base.css">
+    <link rel="stylesheet" href="../styles/base_styles/form.css">
+    <link rel="stylesheet" href="../styles/base_styles/header.css">
+    <link rel="stylesheet" href="../styles/base_styles/footer.css">
+    <link rel="stylesheet" href="../styles/registration.css">
+</head>
+<body>
+    <header>
+        <div class="desktop-header-container">
+            <a class="logo-container" href="../index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#68f776" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-banknote-icon lucide-banknote"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+                <h1 class="logo-title">Finance Tracker</h1>
+            </a>
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="">
+                            Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">
+                            Отчеты
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&pp=ygUIcmlja3JvbGygBwE%3D">
+                            О нас
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <label class="burger-menu-button" for="menu-checkbox">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+            </label>
+        </div>
+        <input type="checkbox" id="menu-checkbox" style="display: none;">
+        <div class="mobile-nav-container">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="nav-item">
+                        <a href="">
+                            Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">
+                            Отчеты
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&pp=ygUIcmlja3JvbGygBwE%3D">
+                            О нас
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="registration-section">
+            <h1 class="form-title">Зарегистрироваться</h1>
+            <form action="">
+                <div class="form-input-item">
+                    <label for="">Email</label>
+                    <input type="email" class="form-input" id="email-input" placeholder="Введите Email">
+                </div>
+                <div class="form-input-item">
+                    <label for="">Пароль</label>
+                    <input type="password" class="form-input" id="password-input" placeholder="Введите Пароль">
+                </div>
+                <div class="form-input-item">
+                    <label for="">Подтверждение Пароля</label>
+                    <input type="password" class="form-input" id="confirm-input" placeholder="Подтвердите Пароль">
+                </div>
+                <input type="submit" class="submit-button" value="Зарегистрироваться"/>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <p>© 2026 Finance Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
