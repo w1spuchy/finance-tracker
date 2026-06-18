@@ -1,9 +1,20 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const app = require("./app.js");
-const {getPdfText, getPaymentRecords} = require("./utils/pdfParser.js");
+const pool = require('./db.js');
+const authRouter = require('../routes/authRouter.js');
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000, async ()=>
+
+app.listen(PORT, async ()=>
 {
-    const path = "./utils/example_data/example_pdf_3.pdf";
-    console.log("server is running");
-    console.log(await getPaymentRecords(path, "BelarusBank"));
+    try
+    {
+
+        console.log("server is running");
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
 })

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/base_styles/header.css">
     <link rel="stylesheet" href="../styles/base_styles/footer.css">
     <link rel="stylesheet" href="../styles/registration.css">
+    <script src="../scripts/registration.js"></script>
 </head>
 <body>
     <header>
@@ -66,18 +67,18 @@
     <main>
         <section class="registration-section">
             <h1 class="form-title">Зарегистрироваться</h1>
-            <form action="">
+            <form action="" id="registration-form" method="post">
                 <div class="form-input-item">
                     <label for="">Email</label>
-                    <input type="email" class="form-input" id="email-input" placeholder="Введите Email">
+                    <input type="email" name="email" class="form-input" id="email-input" placeholder="Введите Email" required>
                 </div>
                 <div class="form-input-item">
                     <label for="">Пароль</label>
-                    <input type="password" class="form-input" id="password-input" placeholder="Введите Пароль">
+                    <input type="password" name="password" class="form-input" id="password-input" placeholder="Введите Пароль" required>
                 </div>
                 <div class="form-input-item">
                     <label for="">Подтверждение Пароля</label>
-                    <input type="password" class="form-input" id="confirm-input" placeholder="Подтвердите Пароль">
+                    <input type="password" name="confirm" class="form-input" id="confirm-input" placeholder="Подтвердите Пароль" required>
                 </div>
                 <input type="submit" class="submit-button" value="Зарегистрироваться"/>
             </form>
