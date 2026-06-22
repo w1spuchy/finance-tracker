@@ -2,6 +2,7 @@ const Router = require('express');
 const router = new Router();
 const controller = require('../controllers/authController.js');
 const {check} = require('express-validator');
+const authMiddleware = require("../middleware/authMiddleware.js");
 
 router.post("/registration", [
     check('email', 'Email не может быть пустым').notEmpty(),
@@ -10,6 +11,6 @@ router.post("/registration", [
     check('password', 'Неправильный формат пароля').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/)
 ], controller.registration);
 router.post("/login", controller.login);
-router.get("/users", controller.getUser)
+router.get("/users", authMiddleware, controller.getUsers)
 
 module.exports = router;

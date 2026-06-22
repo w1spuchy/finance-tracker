@@ -1,6 +1,17 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
-const { getUsers, getUserByEmail, AddUser } = require('../models/User.js');
+const { GetUsers, GetUserByEmail, AddUser } = require('../models/User.js');
+const {secret} = require('../../config.js');
+
+const generateAccessToken = (id, email) => 
+{
+    const payload = {
+        id: id,
+        email: email
+    }
+    return jwt.sign(payload, secret, {expiresIn: "24h"});
+}
 
 class authController
 {
@@ -18,10 +29,10 @@ class authController
                 })
             }
             const {email, password} = req.body
-            const condidates = await getUserByEmail(email);
-            if(condidates.length != 0)
+            const condidate = await GetUserByEmail(email);
+            if(condidate.length != 0)
             {
-                return res.status(400).json({message: "User with this email already exists!!!!"})
+                return res.status(400).json({message: "User with this email already exists"})
             }
             const passwordHash = bcrypt.hashSync(password, 5);
             const result = await AddUser(email, passwordHash);
@@ -30,7 +41,7 @@ class authController
         catch(e)
         {
             console.log(e);
-            res.status(400).json({message: "Registration error"});
+            res.status(500).json({message: "Registration error"});
         }
     }
 
@@ -38,26 +49,41 @@ class authController
     {
         try
         {
+            const {email, password} = req.body;
+            const [ user ] = await GetUserByEmail(email);
+            console.log(user)
+            if(!user)
+            {
+                res.status(400).json({message: "User not found"});
+            }
 
+            const isPasswordValid = bcrypt.compareSync(password, user.passwordHash);
+            if(!isPasswordValid)
+            {
+                res.status(400).json({message: "Password is invalid"});
+            }
+
+            const token = generateAccessToken(user.idUser, user.email);
+            return res.status(200).json({token});
         }
         catch(e)
         {
             console.log(e);
-            res.status(400).json({message: "Login error"});
+            res.status(500).json({message: "Login error"});
         }
     }
 
-    async getUser(req, res)
+    async getUsers(req, res)
     {
         try
         {
-            const result = await getUsers();
+            const result = await GetUsers();
             res.json(result);
         }
         catch(e)
         {
             console.log(e);
-            res.status(400).json({message: "Get User error"});
+            res.status(500).json({message: "Get User error"});
         }
     }
 }

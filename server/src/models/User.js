@@ -1,15 +1,15 @@
 const pool = require('../db.js');
 
-async function getUsers()
+async function GetUsers()
 {
     const [ rows ] = await pool.query(`SELECT * FROM users`);
     return rows;
 }
 
-async function getUserByEmail(email)
+async function GetUserByEmail(email)
 {
     const [ rows ] = await pool.query(`
-        SELECT * FROM users WHERE email = ?
+        SELECT idUser, email, password_hash as passwordHash FROM users WHERE email = ? LIMIT 1
     `, [email]);
     return rows;
 }
@@ -24,4 +24,4 @@ async function AddUser(email, passwordHash) {
     return await getUserByEmail(email);
 }
 
-module.exports = { getUsers, getUserByEmail, AddUser };
+module.exports = { GetUsers, GetUserByEmail, AddUser };

@@ -1,3 +1,4 @@
 node_modules/
 .env
 src/utils/example_data/
+config.js
