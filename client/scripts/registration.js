@@ -1,25 +1,39 @@
+import SerializeForm from "../scripts/utils/form.js";
+import DisplayNotification from "./utils/notification.js";
+
 document.addEventListener('DOMContentLoaded', ()=>{
-    const regForm = document.getElementById("registration-form");
-    regForm.addEventListener('submit', (event)=>
+    const registrationForm = document.getElementById("registration-form");
+    registrationForm.addEventListener('submit', async (event)=>
     {
         event.preventDefault();
-        console.log(Array.from(SerializeForm(regForm).entries()));
+        const data = SerializeForm(registrationForm);
+        if(data.get("password") != data.get("confirm"))
+        {
+            DisplayNotification("Пароль и подтверждение пароля не совпадают");
+            return
+        }
+
+        const response = await fetch('http://localhost:5000/auth/registration',{
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ 
+                "email": data.get("email"),
+                "password": data.get("password")
+            })
+        })
+
+        const responseData = await response.json();
+
+        if(Object.hasOwn(responseData, "errors"))
+        {
+            const errors = responseData.errors;
+            DisplayNotification(...errors);
+            return
+        }
+
+        window.location.href="../pages/authentification.html";       
     })
 })
 
-
-function SerializeForm(formNode)
-{
-    const { elements } = formNode;
-
-    const data = new FormData();
-
-    Array.from(elements).filter((item)=>{ return !!item.name })
-    .forEach((el)=>
-    {
-        const { name, type } = el;
-        const value = type === 'checkbox' ? el.checked : el.value;
-        data.append(name, value)
-    });
-    return data
-}

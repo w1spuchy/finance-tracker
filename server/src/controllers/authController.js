@@ -19,21 +19,23 @@ class authController
     {
         try
         {
-            const errors = validationResult(req);
-            if(!errors.isEmpty())
+            const validationErrors = validationResult(req);
+            if(!validationErrors.isEmpty())
             {
-                return res.status(400).json(
-                {
-                    message: "Error occured via registration",
-                    errors: errors
-                })
+                const message = "Error occured via registration";
+                const errors = Array.from(validationErrors.errors).map((err) => err.msg)
+                return res.status(400).json({ message, errors })
             }
+
             const {email, password} = req.body
             const condidate = await GetUserByEmail(email);
             if(condidate.length != 0)
             {
-                return res.status(400).json({message: "User with this email already exists"})
+                const message = "User with this email already exists";
+                const errors = ["Пользователь с данной почтой уже существует"];
+                return res.status(400).json({message, errors})
             }
+
             const passwordHash = bcrypt.hashSync(password, 5);
             const result = await AddUser(email, passwordHash);
             res.status(200).json(result);
@@ -51,20 +53,31 @@ class authController
         {
             const {email, password} = req.body;
             const [ user ] = await GetUserByEmail(email);
-            console.log(user)
             if(!user)
             {
-                res.status(400).json({message: "User not found"});
+                const message = "User not found";
+                const errors = ["Данный пользователь не был найден"];
+                return res.status(400).json({message, errors});
             }
 
             const isPasswordValid = bcrypt.compareSync(password, user.passwordHash);
             if(!isPasswordValid)
             {
-                res.status(400).json({message: "Password is invalid"});
+                const message = "Password is invalid";
+                const errors = ["Неверный пароль"];
+                return res.status(400).json({message, errors});
             }
 
             const token = generateAccessToken(user.idUser, user.email);
-            return res.status(200).json({token});
+            
+            res.cookie("token", token, {
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax",
+                maxAge: 24 * 60 * 60 * 1000
+            })
+
+            return res.status(200).json({ message: "Login succcessful"});
         }
         catch(e)
         {

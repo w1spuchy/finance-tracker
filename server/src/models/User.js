@@ -21,7 +21,7 @@ async function AddUser(email, passwordHash) {
     `,
     [email, passwordHash])
     
-    return await getUserByEmail(email);
+    return await GetUserByEmail(email);
 }
 
 module.exports = { GetUsers, GetUserByEmail, AddUser };

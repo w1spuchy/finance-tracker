@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="../styles/base_styles/form.css">
     <link rel="stylesheet" href="../styles/base_styles/header.css">
     <link rel="stylesheet" href="../styles/base_styles/footer.css">
+    <link rel="stylesheet" href="../styles/base_styles/notification.css">
     <link rel="stylesheet" href="../styles/registration.css">
-    <script src="../scripts/registration.js"></script>
+    <script type="module" src="../scripts/registration.js"></script>
 </head>
 <body>
     <header>
@@ -65,9 +66,11 @@
         </div>
     </header>
     <main>
+        <div class="notification-container">
+        </div>
         <section class="registration-section">
             <h1 class="form-title">Зарегистрироваться</h1>
-            <form action="" id="registration-form" method="post">
+            <form id="registration-form">
                 <div class="form-input-item">
                     <label for="">Email</label>
                     <input type="email" name="email" class="form-input" id="email-input" placeholder="Введите Email" required>
