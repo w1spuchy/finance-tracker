@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
             DisplayNotification(errors);
             return;
         }
+        
         window.location.href = "../index.html"; 
     })
 })

@@ -1,0 +1,65 @@
+.not-authorized-panel
+{
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.not-authorized-panel.active
+{
+    display: flex;
+}
+
+.not-authorized-section
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 200px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.not-authorized-section h1
+{
+    font-size: 24px;
+}
+
+.not-authorized-section p
+{
+    text-align: center;
+    font-size: 14px;
+}
+
+.go-to-auth-button
+{
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background-color: #0984e3;
+    margin: 10px 0px 0px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 300px;
+    transition: 0.3s ease background-color;
+}
+
+.go-to-auth-button:hover
+{
+    cursor: pointer;
+    background-color: white;
+    color: #0984e3;
+    border: 1px solid #0984e3;
+}

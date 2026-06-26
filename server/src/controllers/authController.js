@@ -86,6 +86,39 @@ class authController
         }
     }
 
+    async logout(req,res)
+    {
+        try{
+            res.clearCookie("token",{
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax"
+            })
+            return res.status(200).json({message: "Logout successful"})
+        }
+        catch(e)
+        {
+            console.log(e);
+            res.status(500).json({message: "Logout error"});
+        }
+    }
+
+    async getMe(req,res)
+    {
+        try
+        {
+            return res.status(200).json({
+                "id": `${req.user.id}`,
+                "email": `${req.user.email}`
+            })
+        }
+        catch(e)
+        {
+            console.log(e);
+            res.status(500).json({message: "getMe error"})
+        }
+    }
+
     async getUsers(req, res)
     {
         try

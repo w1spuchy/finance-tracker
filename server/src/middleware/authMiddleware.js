@@ -5,7 +5,7 @@ module.exports = function(req, res, next)
 {
     if(req.method === "OPTIONS")
     {
-        next();
+        return next();
     }
 
     try
@@ -13,7 +13,7 @@ module.exports = function(req, res, next)
         const token = req.cookies.token
         if(!token)
         {
-            res.status(400).json({message: "User is not athorized"});
+            return res.status(400).json({message: "User is not athorized"});
         }
         const decodedData = jwt.verify(token, secret);
         req.user = decodedData;

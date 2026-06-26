@@ -11,6 +11,8 @@ router.post("/registration", [
     check('password', 'Неправильный формат пароля').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/)
 ], controller.registration);
 router.post("/login", controller.login);
+router.post("/logout", authMiddleware, controller.logout);
+router.get("/me", authMiddleware, controller.getMe);
 router.get("/users", authMiddleware, controller.getUsers)
 
 module.exports = router;
