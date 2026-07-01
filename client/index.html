@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="./styles/base_styles/footer.css">
     <link rel="stylesheet" href="./styles/base_styles/notification.css">
     <link rel="stylesheet" href="./styles/base_styles/not-authorized.css">
+    <link rel="stylesheet" href="./styles/base_styles/chart.css">
     <link rel="stylesheet" href="./styles/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./scripts/utils/chart.js"></script>
     <script type="module" src="./scripts/index.js"></script>
     <title>Finance Tracker</title>
 </head>
@@ -29,7 +32,7 @@
             <nav class="header-nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="">
+                        <a href="./index.html">
                             Главная
                         </a>
                     </li>
@@ -71,7 +74,7 @@
             <nav class="mobile-nav">
                 <ul class="mobile-nav-list">
                     <li class="nav-item">
-                        <a href="">
+                        <a href="./index.html">
                             Главная
                         </a>
                     </li>
@@ -96,7 +99,97 @@
         </div>
     </header>
     <main>
-
+        <section class="month-spending-section">
+            <div id="month-spending-container" class="chart-container">
+                <h3 class="chart-title">Транзакции за месяц</h3>
+                <canvas id="month-canvas"></canvas>
+            </div>
+            <div id="transactions-list-container" class="chart-container">
+                <h3 class="chart-title">Список трат</h3>
+                <div class="transaction-list-wrapper">
+                    <div class="wrapper-bar top"></div>
+                    <ul class="scrollable-list">
+                        <li class="transaction-item">
+                            <div class="transaction-amount plus">+300 BYN</div>
+                            <div class="trans-bot-section">
+                                <div class="category-container">
+                                    <div class="category-color"></div>
+                                    <div class="category-name">Степендия</div>
+                                </div>
+                                <div class="transaction-data">29.06.2026 18:23:23</div>
+                            </div>
+                        </li>
+                        <li class="transaction-item">
+                            <div class="transaction-amount minus">-100 BYN</div>
+                            <div class="trans-bot-section">
+                                <div class="category-container">
+                                    <div class="category-color"></div>
+                                    <div class="category-name">Продукты</div>
+                                </div>
+                                <div class="transaction-data">29.06.2026 18:23:23</div>
+                            </div>
+                        </li>
+                        <li class="transaction-item">
+                            <div class="transaction-amount minus">-100 BYN</div>
+                            <div class="trans-bot-section">
+                                <div class="category-container">
+                                    <div class="category-color"></div>
+                                    <div class="category-name">Продукты</div>
+                                </div>
+                                <div class="transaction-data">29.06.2026 18:23:23</div>
+                            </div>
+                        </li>
+                        <li class="transaction-item">
+                            <div class="transaction-amount minus">-100 BYN</div>
+                            <div class="trans-bot-section">
+                                <div class="category-container">
+                                    <div class="category-color"></div>
+                                    <div class="category-name">Продукты</div>
+                                </div>
+                                <div class="transaction-data">29.06.2026 18:23:23</div>
+                            </div>
+                        </li>
+                        <li class="transaction-item">
+                            <div class="transaction-amount minus">-100 BYN</div>
+                            <div class="trans-bot-section">
+                                <div class="category-container">
+                                    <div class="category-color"></div>
+                                    <div class="category-name">Продукты</div>
+                                </div>
+                                <div class="transaction-data">29.06.2026 18:23:23</div>
+                            </div>
+                        </li>
+                        <li class="transaction-item">
+                            <div class="transaction-amount minus">-100 BYN</div>
+                            <div class="trans-bot-section">
+                                <div class="category-container">
+                                    <div class="category-color"></div>
+                                    <div class="category-name">Продукты</div>
+                                </div>
+                                <div class="transaction-data">29.06.2026 18:23:23</div>
+                            </div>
+                        </li>
+                        <li class="transaction-item">
+                            <div class="transaction-amount minus">-100 BYN</div>
+                            <div class="trans-bot-section">
+                                <div class="category-container">
+                                    <div class="category-color"></div>
+                                    <div class="category-name">Продукты</div>
+                                </div>
+                                <div class="transaction-data">29.06.2026 18:23:23</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="wrapper-bar bot"></div>
+                </div>
+            </div>
+        </section>
+        <section class="week-spending-section">
+            <div id="week-spendings-container" class="chart-container">
+                <h3 class="chart-title">Транзакции за неделю</h3>
+                <canvas id="week-canvas"></canvas>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="footer-container">

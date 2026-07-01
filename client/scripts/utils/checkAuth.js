@@ -15,6 +15,8 @@ export async function GetAuthorizedUser() {
 
 export function initAuth(user)
 {
+    const profileButton = document.querySelector(".profile-button");
+    profileButton.style = "gap: 5px"
     const profileNameNode = document.querySelector(".profile-name-p");
     profileNameNode.innerHTML = user.email;
     const logoutButtons = document.querySelectorAll(".nav-item.out");

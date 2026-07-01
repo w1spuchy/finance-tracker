@@ -1,0 +1,69 @@
+.chart-title
+{
+    margin: 0px 0px 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.chart-container
+{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    height: 400px;
+    max-height: 75vh;
+    margin: 0px 0px 50px;
+}
+
+.month-spending-section
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#month-spending-container
+{
+    width: 50%;
+}
+
+#transactions-list-container
+{
+    width: 50%;
+}
+
+.week-spending-section
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#week-spendings-container
+{
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .month-spending-section
+    {
+        flex-direction: column;
+    }
+
+    #month-spending-container
+    {
+        width: 100%;
+    }
+
+    #transactions-list-container
+    {
+        width: 100%;
+    }
+}
